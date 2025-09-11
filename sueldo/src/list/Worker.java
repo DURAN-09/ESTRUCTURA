@@ -1,3 +1,5 @@
+package list;
+
 public class Worker {
     private int id;
     private String nombre;
