@@ -2,7 +2,7 @@ package Cadena;
 
 public class Main {
     public static void main(String[] args){
-        String firstWord="hola";
+        String firstWord="parangaricutirimicuaro";
         int l = firstWord.length();
         System.out.println(Cadena(firstWord,l-1));
     }
