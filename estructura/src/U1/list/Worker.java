@@ -1,4 +1,4 @@
-package list;
+package U1.list;
 
 public class Worker {
     private int id;

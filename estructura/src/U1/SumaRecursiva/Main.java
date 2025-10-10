@@ -1,4 +1,4 @@
-package SumaRecursiva;
+package U1.SumaRecursiva;
 
 public class Main {
     public static void main(String[] args){

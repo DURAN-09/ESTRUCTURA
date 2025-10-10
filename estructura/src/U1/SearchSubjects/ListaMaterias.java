@@ -1,9 +1,8 @@
-package SearchSubjects;
+package U1.SearchSubjects;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
-import java.util.Queue;
+
 /*
 - Clase ListaMaterias con métodos: void agregar(String materia), boolean contiene(String materia), void imprimir().
 

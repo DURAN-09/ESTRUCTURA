@@ -1,4 +1,4 @@
-package Fibonacci;
+package U1.Fibonacci;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package BankDocuments;
+package U1.BankDocuments;
 /*
 Instrucciones:
 Un banco atiende clientes en una cola.

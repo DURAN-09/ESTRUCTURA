@@ -1,4 +1,4 @@
-package TiposGenericos;
+package U1.TiposGenericos;
 
 
 public class Box<T>{

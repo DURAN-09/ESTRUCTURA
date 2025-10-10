@@ -1,4 +1,4 @@
-package SearchSubjects;
+package U1.SearchSubjects;
 
 public class Main {
     public static void main(String[] args){
