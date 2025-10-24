@@ -40,11 +40,7 @@ public class ArrayStack<T> implements IStack<T> {
         }
         return (T) data[top];
     }
-    @Override
-    public void clear() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clear'");
-    }
+
     @Override
     public int size() {
         return top;
@@ -67,7 +63,13 @@ public class ArrayStack<T> implements IStack<T> {
         sb.append("!");
         System.out.println(sb.toString());
     }
+    @Override
+    public void clear() {
+        for (int i = 0; i < top; i++) {
+            data[i] = null;
+        }
+        top = 0;
+    }
 
-    
-    
+
 }
