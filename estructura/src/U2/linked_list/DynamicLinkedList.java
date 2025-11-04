@@ -41,4 +41,30 @@ public class DynamicLinkedList {
         }
         System.out.println();
     }
+
+    public SplitResult splitEvenOdd() {
+        DynamicLinkedList evenList = new DynamicLinkedList();
+        DynamicLinkedList oddList = new DynamicLinkedList();
+
+        Node current = head;
+        while (current != null) {
+            if (current.data % 2 == 0) {
+                evenList.add(current.data);
+            } else {
+                oddList.add(current.data);
+            }
+            current = current.next;
+        }
+        return new SplitResult(evenList, oddList);
+    }
+
+    public static class SplitResult {
+        public DynamicLinkedList evenList;
+        public DynamicLinkedList oddList;
+
+        public SplitResult(DynamicLinkedList evenList, DynamicLinkedList oddList) {
+            this.evenList = evenList;
+            this.oddList = oddList;
+        }
+    }
 }
