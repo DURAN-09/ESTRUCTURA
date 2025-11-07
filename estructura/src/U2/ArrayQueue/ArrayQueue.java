@@ -1,76 +1,99 @@
 package U2.ArrayQueue;
 
-import java.util.Stack;
+public class ArrayQueue<T> implements IQueue<T> {
 
-public class ArrayQueue<T> {
     private Object[] data;
-    private int front;
-    private int rear;
+    private int rear;   // siguiente índice de inserción
+    private int front;  // índice del frente
     private int size;
-    private int capacity;
+    private static final int INITIAL_CAPACITY = 10;
 
-    public ArrayQueue(int capacity) {
-        this.capacity = capacity;
-        this.data = new Object[capacity];
+    public ArrayQueue() {
+        this.data = new Object[INITIAL_CAPACITY];
+        this.rear = 0;
         this.front = 0;
-        this.rear = -1;
         this.size = 0;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    public boolean isFull() {
-        return size == capacity;
-    }
-
-    public void enqueue(T item) {
-        if (isFull()) {
-            throw new RuntimeException("Queue is full");
+    @Override
+    public void offer(T element) {
+        if (size == data.length) {
+            expandCapacity();
         }
-        rear = (rear + 1) % capacity;
-        data[rear] = item;
+        data[rear] = element;
+        rear = (rear + 1 + data.length) % data.length;
+        size ++;
+    }
+
+    // Inserción al FRENTE (necesario para UNDO )
+    public void offerFront(T element) {
+        if (size == data.length) {
+            expandCapacity();
+        }
+        front = (front - 1 + data.length) % data.length;
+        data[front] = element;
         size++;
     }
 
     @SuppressWarnings("unchecked")
-    public T dequeue() {
+    @Override
+    public T poll() {
         if (isEmpty()) {
-            throw new RuntimeException("Queue is empty");
+            System.out.println("La Queue esta vacia");
+            return null;
         }
-        T item = (T) data[front];
-        front = (front + 1) % capacity;
+        T result = (T) data[front];
+        data[front] = null;
+        front = (front + 1) % data.length;
         size--;
-        return item;
-    }
-
-    public int size() {
-        return size;
+        return result;
     }
 
     @SuppressWarnings("unchecked")
-    public void reverse() {
-        Stack<T> stack = new Stack<>();
-
-        while (!isEmpty()) {
-            stack.push(dequeue());
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            System.out.println("La queue esta vacia");
+            return null;
         }
-
-        while (!stack.isEmpty()) {
-            enqueue(stack.pop());
-        }
+        return (T) data[front];
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("[");
+    public void clear() {
         for (int i = 0; i < size; i++) {
-            int index = (front + i) % capacity;
-            sb.append(data[index]);
-            if (i < size - 1) sb.append(", ");
+            data[(front + i) % data.length] = null;
+        }
+        front = 0;
+        rear = 0;
+        size = 0;
+    }
+
+    private void expandCapacity() {
+        Object[] newArr = new Object[data.length * 2];
+        for (int i = 0; i < size; i++) {
+            newArr[i] = data[(front + i) % data.length];
+        }
+        front = 0;
+        data = newArr;
+        rear = size;
+    }
+
+    @Override
+    public void print() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < size; i++) {
+            sb.append(data[(front + i) % data.length]);
+            if (i < size - 1) sb.append("->");
         }
         sb.append("]");
-        return sb.toString();
+        System.out.println(sb.toString());
     }
+
+    @Override
+    public boolean isEmpty() { return size == 0; }
+
+    @Override
+    public int getSize() { return size; }
 }

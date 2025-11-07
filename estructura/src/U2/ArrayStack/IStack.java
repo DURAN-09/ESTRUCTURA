@@ -1,7 +1,7 @@
 
 package U2.ArrayStack;
-public interface IStack<T> {
 
+public interface IStack<T> {
     void push(T data);
     T pop();
     T peek();

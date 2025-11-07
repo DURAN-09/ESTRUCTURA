@@ -2,7 +2,7 @@ package U2.ArrayQueue;
 
 public class App {
     public static void main(String[] args) {
-        ArrayQueue<Customer> queue = new ArrayQueue<>(10);
+        /*ArrayQueue<Customer> queue = new ArrayQueue<>(10);
 
         queue.enqueue(new Customer(1, "Ana"));
         queue.enqueue(new Customer(2, "Luis"));
@@ -18,6 +18,6 @@ public class App {
         System.out.println(queue);
         int after = queue.size();
 
-        System.out.println("Elementos antes = " + before + ", elementos después = " + after);
+        System.out.println("Elementos antes = " + before + ", elementos después = " + after);*/
     }
 }
