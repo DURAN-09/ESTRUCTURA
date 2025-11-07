@@ -1,4 +1,4 @@
-package U3.BubbleSort;
+package BubbleSort;
 
 public class App {
     public static void main(String[] args) throws Exception {
