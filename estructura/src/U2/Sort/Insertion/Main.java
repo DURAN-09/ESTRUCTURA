@@ -20,12 +20,9 @@ public class Main {
     public static void main(String[] args) {
         int[] arr = {32, 40, 28, 30};
         int[] original = arr.clone();
-
         InsertionSort.sort(arr);
-
         int min = arr[0];
         int max = arr[0];
-
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] < min) {
                 min = arr[i];
@@ -34,28 +31,22 @@ public class Main {
                 max = arr[i];
             }
         }
-
         int rango = max - min;
-
         System.out.println("Arreglo original:");
         for (int n : original) {
             System.out.print(n + " ");
         }
-
         System.out.println("\nArreglo ordenado:");
         for (int n : arr) {
             System.out.print(n + " ");
         }
-
         System.out.println("\nTemperatura mínima: " + min);
         System.out.println("Temperatura máxima: " + max);
         System.out.println("Rango: " + rango);
-
         System.out.print("3 temperaturas más bajas: ");
         for (int i = 0; i < arr.length && i < 3; i++) {
             System.out.print(arr[i] + " ");
         }
-
         System.out.print("\n3 temperaturas más altas: ");
         for (int i = arr.length - 1; i >= 0 && i >= arr.length - 3; i--) {
             System.out.print(arr[i] + " ");
